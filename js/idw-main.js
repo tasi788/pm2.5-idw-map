@@ -484,39 +484,39 @@
           };
         });
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log(error);
     });
 
   // notice setting
-  let noticeURL = "notice_en-US.html";
-  if(navigator.language === "zh-TW") {
-    noticeURL = "notice_zh-TW.html";
-  }
-  let noticeRequest = makeRequest("GET", noticeURL);
-  noticeRequest.then(text => {
-    let popup = new L.popup({
-      "maxWidth": window.innerWidth * 0.6,
-      "className": "airbox-notice"
-    }).setContent(text);
-    
-    if(L.Browser.mobile) {
-      popup.setLatLng([22.77, 120.88]).addTo(map);
-    } else {
-      popup.setLatLng([22.77, 120.88]).addTo(map);
-      document.getElementsByClassName("airbox-notice")[0].style.fontSize = "16px";
-    }
-  }).catch(function(error) {
-    console.log(error);
-  });
+  // let noticeURL = "notice_en-US.html";
+  // if (navigator.language === "zh-TW") {
+  //   noticeURL = "notice_zh-TW.html";
+  // }
+  // let noticeRequest = makeRequest("GET", noticeURL);
+  // noticeRequest.then(text => {
+  // let popup = new L.popup({
+  //   "maxWidth": window.innerWidth * 0.6,
+  //   "className": "airbox-notice"
+  // }).setContent(text);
+
+  //   if (L.Browser.mobile) {
+  //     popup.setLatLng([22.77, 120.88]).addTo(map);
+  //   } else {
+  //     popup.setLatLng([22.77, 120.88]).addTo(map);
+  //     document.getElementsByClassName("airbox-notice")[0].style.fontSize = "16px";
+  //   }
+  // }).catch(function (error) {
+  //   console.log(error);
+  // });
 
   // make request function in promise
   // for loading json and geojson
   function makeRequest(method, url) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       let xhr = new XMLHttpRequest();
       xhr.open(method, url);
-      xhr.onload = function() {
+      xhr.onload = function () {
         if (this.status >= 200 && this.status < 300) {
           resolve(xhr.response);
         } else {
